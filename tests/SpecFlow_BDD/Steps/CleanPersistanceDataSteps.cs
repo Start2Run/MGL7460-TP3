@@ -6,22 +6,29 @@ namespace SpecFlow_BDD.Steps
     [Binding]
     public class CleanPersistanceDataSteps
     {
+        private readonly ScenarioContext _scenarioContext;
+
+        public CleanPersistanceDataSteps(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
+
         [Given(@"a database name is configured in the application configuration file")]
         public void GivenADatabaseNameIsConfiguredInTheApplicationConfigurationFile()
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
         
         [When(@"a query is created to celan the DB")]
         public void WhenAQueryIsCreatedToCelanTheDB()
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
         
         [Then(@"all the existing peristed temperature data should be deleted from the DB")]
         public void ThenAllTheExistingPeristedTemperatureDataShouldBeDeletedFromTheDB()
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
     }
 }
