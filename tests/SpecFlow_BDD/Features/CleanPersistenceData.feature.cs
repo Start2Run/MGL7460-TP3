@@ -19,7 +19,7 @@ namespace SpecFlow_BDD.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.5.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class CleanPersistanceDataFeature : object, Xunit.IClassFixture<CleanPersistanceDataFeature.FixtureData>, System.IDisposable
+    public partial class CleanPersistenceDataFeature : object, Xunit.IClassFixture<CleanPersistenceDataFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace SpecFlow_BDD.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "CleanPersistanceData.feature"
+#line 1 "CleanPersistenceData.feature"
 #line hidden
         
-        public CleanPersistanceDataFeature(CleanPersistanceDataFeature.FixtureData fixtureData, SpecFlow_BDD_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public CleanPersistenceDataFeature(CleanPersistenceDataFeature.FixtureData fixtureData, SpecFlow_BDD_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,7 @@ namespace SpecFlow_BDD.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CleanPersistanceData", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CleanPersistenceData", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,7 +81,7 @@ namespace SpecFlow_BDD.Features
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Clean persistence storage")]
-        [Xunit.TraitAttribute("FeatureTitle", "CleanPersistanceData")]
+        [Xunit.TraitAttribute("FeatureTitle", "CleanPersistenceData")]
         [Xunit.TraitAttribute("Description", "Clean persistence storage")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void CleanPersistenceStorage()
@@ -114,10 +114,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("a database name is configured in the application configuration file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
- testRunner.When("a query is created to celan the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("a query is created to clean the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.Then("all the existing peristed temperature data should be deleted from the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("all the existing persisted temperature data should be deleted from the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -130,12 +130,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                CleanPersistanceDataFeature.FeatureSetup();
+                CleanPersistenceDataFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                CleanPersistanceDataFeature.FeatureTearDown();
+                CleanPersistenceDataFeature.FeatureTearDown();
             }
         }
     }

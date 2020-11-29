@@ -121,7 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the request is sent with success to the endpoint address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 6
- testRunner.Then("a temperature data model should be pesisted into the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("a temperature data model should be persisted into the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -163,7 +163,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the request fails to be sent the endpoint address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("nothing should be pesisted into the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("nothing should be persisted into the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -2,11 +2,15 @@
 using Persistence.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Common.Models;
 
 namespace Persistence.Managers
 {
     public class DatabaseHandler : IDatabaseHandler
     {
+        private readonly IDatabaseConnectionFactory _connectionFactory;
+        private readonly IConfigurationModel _configuration;
+
         public Task Clear()
         {
             throw new System.NotImplementedException();

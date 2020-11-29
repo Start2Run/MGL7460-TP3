@@ -2,7 +2,7 @@
 
 namespace Persistence.Contracts
 {
-    interface IDatabaseConnectionFactory
+    public interface IDatabaseConnectionFactory
     {
         IDbConnection GetConnection();
     }

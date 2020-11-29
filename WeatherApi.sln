@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2533F9D5-363
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C4309129-6232-4D7F-A112-1536AA50526C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "src\Communication\Communication.csproj", "{EC03E756-5B06-4179-B4DE-94AC90CEE862}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Communication", "src\Communication\Communication.csproj", "{EC03E756-5B06-4179-B4DE-94AC90CEE862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "src\Business\Business.csproj", "{75FC8E76-5039-40B4-90EE-96DDE8FAEB65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "src\Business\Business.csproj", "{75FC8E76-5039-40B4-90EE-96DDE8FAEB65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "src\Persistence\Persistence.csproj", "{71F8FA9E-1D21-49A1-B815-D8EE1E882A31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "src\Persistence\Persistence.csproj", "{71F8FA9E-1D21-49A1-B815-D8EE1E882A31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "src\Common\Common.csproj", "{2440748A-E272-489A-B2B4-A44BB7FD249C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "src\Common\Common.csproj", "{2440748A-E272-489A-B2B4-A44BB7FD249C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlow_BDD", "tests\SpecFlow_BDD\SpecFlow_BDD.csproj", "{B650F292-9992-4797-930B-5D37BB0A633B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlow_BDD", "tests\SpecFlow_BDD\SpecFlow_BDD.csproj", "{B650F292-9992-4797-930B-5D37BB0A633B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

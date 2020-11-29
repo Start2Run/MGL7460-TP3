@@ -8,6 +8,7 @@
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.14.0" />
     <PackageReference Include="Flurl.Http" Version="3.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.Reactive.Testing" Version="5.0.0" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.4.243" />
 
     
@@ -33,7 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Business\Business.csproj" />
     <ProjectReference Include="..\..\src\Communication\Communication.csproj" />
+    <ProjectReference Include="..\..\src\Persistence\Persistence.csproj" />
   </ItemGroup>
 
 </Project>

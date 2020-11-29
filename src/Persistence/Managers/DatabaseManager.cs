@@ -7,6 +7,12 @@ namespace Persistence.Managers
 {
     public class DatabaseManager : IDbManager
     {
+        private readonly IDatabaseHandler _handler;
+        public DatabaseManager(IDatabaseHandler handler)
+        {
+            _handler = handler;
+        }
+
         public Task Clear()
         {
             throw new System.NotImplementedException();
