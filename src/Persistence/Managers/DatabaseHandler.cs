@@ -11,6 +11,13 @@ namespace Persistence.Managers
         private readonly IDatabaseConnectionFactory _connectionFactory;
         private readonly IConfigurationModel _configuration;
 
+        public DatabaseHandler(IDatabaseConnectionFactory connectionFactory, IConfigurationModel configuration)
+        {
+            _configuration = configuration;
+            _connectionFactory = connectionFactory;
+        }
+
+
         public Task Clear()
         {
             throw new System.NotImplementedException();

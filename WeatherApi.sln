@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "src\Common\Common
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlow_BDD", "tests\SpecFlow_BDD\SpecFlow_BDD.csproj", "{B650F292-9992-4797-930B-5D37BB0A633B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceTests", "tests\PersistenceTests\PersistenceTests.csproj", "{520F2374-0B34-485F-951F-9C75E3ADEE76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{B650F292-9992-4797-930B-5D37BB0A633B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B650F292-9992-4797-930B-5D37BB0A633B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B650F292-9992-4797-930B-5D37BB0A633B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520F2374-0B34-485F-951F-9C75E3ADEE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520F2374-0B34-485F-951F-9C75E3ADEE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520F2374-0B34-485F-951F-9C75E3ADEE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520F2374-0B34-485F-951F-9C75E3ADEE76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{71F8FA9E-1D21-49A1-B815-D8EE1E882A31} = {2533F9D5-363A-4EBD-95EC-B02FAC0CE4F6}
 		{2440748A-E272-489A-B2B4-A44BB7FD249C} = {2533F9D5-363A-4EBD-95EC-B02FAC0CE4F6}
 		{B650F292-9992-4797-930B-5D37BB0A633B} = {C4309129-6232-4D7F-A112-1536AA50526C}
+		{520F2374-0B34-485F-951F-9C75E3ADEE76} = {C4309129-6232-4D7F-A112-1536AA50526C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33C40C06-E4E9-4A79-8E61-BF3A3E4D918E}
