@@ -28,7 +28,6 @@ namespace SpecFlow_BDD.Steps
         public void GivenADatabaseNameIsConfiguredInTheApplicationConfigurationFile()
         {
             Mock.Get(_configuration).SetupGet(config => config.DatabaseName).Returns(Globals.DatabaseName);
-
         }
 
         [When(@"a query is created to recuperate all the persisted temperature data")]
