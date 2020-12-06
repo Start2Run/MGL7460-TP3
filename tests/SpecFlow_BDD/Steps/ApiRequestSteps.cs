@@ -23,11 +23,11 @@ namespace SpecFlow_BDD.Steps
         private HttpTest _httpTest;
         private string _expectedJson;
 
-        private string endpointAddress = "https://localhost";
-        private string apiKey = "apiKey1";
-        private string apiHost = "apiHost1";
-        private string longitude = "10.0";
-        private string latitude = "15.2";
+        private readonly string endpointAddress = "https://localhost";
+        private readonly string apiKey = "apiKey1";
+        private readonly string apiHost = "apiHost1";
+        private readonly string longitude = "10.0";
+        private readonly string latitude = "15.2";
 
         public ApiRequestSteps(ScenarioContext scenarioContext)
         {
