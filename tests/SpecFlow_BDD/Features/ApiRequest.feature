@@ -16,7 +16,7 @@ Scenario: GET Api request should return the expected JSON data model
 Scenario: GET Api request should fail when the incorrect endpoint address is called
 	Given a valid endpoint address is configured in the application configuration file 
 	When the request is sent to a Rest Api endpoint
-	And the endpoint address is no the same as the one from the configuration file
+	And the endpoint address is not the same as the one from the configuration file
 	Then the request should fail and return a null model
 
 @mytag

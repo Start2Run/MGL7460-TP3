@@ -1,7 +1,7 @@
-﻿using Persistence.Contracts;
-using Persistence.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Persistence.Contracts;
+using Persistence.Models;
 
 namespace Persistence.Managers
 {
@@ -13,19 +13,24 @@ namespace Persistence.Managers
             _handler = handler;
         }
 
-        public Task Clear()
+        public bool Init()
         {
-            throw new System.NotImplementedException();
+            return _handler.Init();
         }
 
-        public Task<IEnumerable<DbModel>> GetAllData()
+        public async Task Insert(DbModel model)
         {
-            throw new System.NotImplementedException();
+            await _handler.Insert(model);
         }
 
-        public Task Insert(DbModel model)
+        public async Task<IEnumerable<DbModel>> GetAllData()
         {
-            throw new System.NotImplementedException();
+            return await _handler.GetAllData();
+        }
+
+        public async Task Clear()
+        {
+            await _handler.Clear();
         }
     }
 }

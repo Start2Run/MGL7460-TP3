@@ -165,7 +165,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the request is sent to a Rest Api endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
- testRunner.And("the endpoint address is no the same as the one from the configuration file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the endpoint address is not the same as the one from the configuration file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
  testRunner.Then("the request should fail and return a null model", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

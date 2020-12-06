@@ -53,8 +53,8 @@ namespace SpecFlow_BDD.Steps
             _httpTest.RespondWith(_expectedJson);
         }
         
-        [When(@"the endpoint address is no the same as the one from the configuration file")]
-        public void WhenTheEndpointAddressIsNoTheSameAsTheOneFromTheConfigurationFile()
+        [When(@"the endpoint address is not the same as the one from the configuration file")]
+        public void WhenTheEndpointAddressIsNotTheSameAsTheOneFromTheConfigurationFile()
         {
             var _differentEndpointAddress = "https://localhost/otherEndpoint";
             Mock.Get(_configuration).SetupGet(config => config.ApiAddress).Returns(_differentEndpointAddress);

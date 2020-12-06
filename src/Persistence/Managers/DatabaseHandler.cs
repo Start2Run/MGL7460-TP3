@@ -1,8 +1,13 @@
-﻿using Persistence.Contracts;
-using Persistence.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Common.Models;
+using Dapper;
+using Persistence.Contracts;
+using Persistence.Models;
+using System.Data.SQLite;
+using Common;
+using Persistence.Extensions;
 
 namespace Persistence.Managers
 {
@@ -17,25 +22,68 @@ namespace Persistence.Managers
             _connectionFactory = connectionFactory;
         }
 
-
-        public Task Clear()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<DbModel>> GetAllData()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public bool Init()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                CreateDb();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+
+            return true;
         }
 
-        public Task Insert(DbModel model)
+        public async Task Insert(DbModel model)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                using var connection = _connectionFactory.GetConnection();
+                connection.Open();
+                await connection.ExecuteAsync(
+                    $"INSERT INTO {Globals.TableName} (Longitude, Latitude, Temperature, DateTime)" +
+                    "VALUES (@Longitude, @Latitude, @Temperature, @DateTime);", model);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        public async Task<IEnumerable<DbModel>> GetAllData()
+        {
+            IEnumerable<DbModel> result = new List<DbModel>();
+            try
+            {
+                using var connection = _connectionFactory.GetConnection();
+                result = await connection.QueryAsync<DbModel>($"SELECT rowid AS Id, Longitude, Latitude, Temperature, DateTime FROM {Globals.TableName};");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return result;
+        }
+
+        public async Task Clear()
+        {
+            using var connection = _connectionFactory.GetConnection();
+            await connection.ExecuteAsync($"Delete FROM {Globals.TableName}");
+        }
+
+        private void CreateDb()
+        {
+            if (System.IO.File.Exists(_configuration.DatabaseName)) return;
+            Console.WriteLine("Just entered to create Sync DB");
+
+            SQLiteConnection.CreateFile(_configuration.DatabaseName);
+
+            using var connection = _connectionFactory.GetConnection();
+            connection.CreateTableIfNotExists(
+                Globals.TableName);
         }
     }
 }
