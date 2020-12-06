@@ -2,7 +2,7 @@
 
 namespace Business.Contracts
 {
-    interface IMenuManager
+    public interface IMenuManager
     {
         bool SelectOption(MenuOption menuOption);
     }
