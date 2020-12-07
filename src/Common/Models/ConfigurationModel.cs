@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Configuration;
 
 namespace Common.Models
 {
@@ -14,7 +14,13 @@ namespace Common.Models
 
         public void Load()
         {
-            throw new NotImplementedException();
+            DatabaseName = ConfigurationManager.AppSettings.Get(Globals.DatabaseName);
+            PullIntervalInSeconds = int.TryParse(ConfigurationManager.AppSettings.Get(Globals.PullIntervalInSeconds), out var interval) ? interval : Globals.DefaultPullIntervalInSeconds;
+            ApiAddress = ConfigurationManager.AppSettings.Get(Globals.ApiAddress);
+            ApiKey = ConfigurationManager.AppSettings.Get(Globals.ApiKey);
+            ApiHost = ConfigurationManager.AppSettings.Get(Globals.ApiHost);
+            Longitude = ConfigurationManager.AppSettings.Get(Globals.Longitude);
+            Latitude = ConfigurationManager.AppSettings.Get(Globals.Latitude);
         }
     }
 }
