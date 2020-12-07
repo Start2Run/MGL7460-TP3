@@ -34,7 +34,8 @@ namespace SpecFlow_BDD.Steps
             var schedulerManager = new SchedulerManager(_configuration, _testScheduler);
             _requestManager = mFixture.Create<IRequestManager>();
             _dbManager = mFixture.Create<IDbManager>();
-            _menuManager = new MenuManager(_requestManager, schedulerManager, _dbManager, _configuration);
+            var consoleWrapper = mFixture.Create<Business.Contracts.IConsoleWrapper>();
+            _menuManager = new MenuManager(_requestManager, schedulerManager, _dbManager, _configuration, consoleWrapper);
 
             Mock.Get(_configuration).SetupGet(config => config.PullIntervalInSeconds).Returns(30);
         }

@@ -27,7 +27,8 @@ namespace Communication.Managers
                     .SetQueryParam(Globals.Longitude, _configuration.Longitude)
                     .SetQueryParam(Globals.Latitude, _configuration.Latitude)
                     .WithHeader(Globals.ApiKey, _configuration.ApiKey)
-                    .WithHeader(Globals.ApiHost, _configuration.ApiHost).GetJsonAsync<Root>();
+                    .WithHeader(Globals.ApiHost, _configuration.ApiHost)
+                    .GetJsonAsync<Root>();
 
                 response.WeatherModel = result;
             }
