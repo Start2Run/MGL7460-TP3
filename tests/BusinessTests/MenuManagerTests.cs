@@ -23,8 +23,9 @@ namespace BusinessTests
             var schedulerManager = fixture.Create<ISchedulerManager>();
             var dbManager = fixture.Create<IDbManager>();
             var configuration = fixture.Create<IConfigurationModel>();
+            var consoleWrapper = fixture.Create<IConsoleWrapper>();
 
-            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration);
+            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration, consoleWrapper);
             menuManager.SelectOption(Common.Enums.MenuOption.GetTemperatureFromRestApi);
 
             Mock.Get(schedulerManager).Verify(x => x.Start(It.IsAny<Func<Task>>()),Times.Once);
@@ -39,8 +40,9 @@ namespace BusinessTests
             var schedulerManager = fixture.Create<ISchedulerManager>();
             var dbManager = fixture.Create<IDbManager>();
             var configuration = fixture.Create<IConfigurationModel>();
+            var consoleWrapper = fixture.Create<IConsoleWrapper>();
 
-            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration);
+            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration, consoleWrapper);
             menuManager.SelectOption(Common.Enums.MenuOption.GetTemperatureFromDb);
 
             Mock.Get(dbManager).Verify(x => x.GetAllData(), Times.Once);
@@ -55,15 +57,16 @@ namespace BusinessTests
             var schedulerManager = fixture.Create<ISchedulerManager>();
             var dbManager = fixture.Create<IDbManager>();
             var configuration = fixture.Create<IConfigurationModel>();
+            var consoleWrapper = fixture.Create<IConsoleWrapper>();
 
-            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration);
-            menuManager.SelectOption(Common.Enums.MenuOption.GetTemperatureFromDb);
+            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration, consoleWrapper);
+            menuManager.SelectOption(Common.Enums.MenuOption.ClearDb);
 
             Mock.Get(dbManager).Verify(x => x.Clear(), Times.Once);
         }
 
         [Fact]
-        public void ShouldRetunFalseWhenTheUserDoesNotSelectAnyValidOption()
+        public void ShouldRetunFalseWhenTheUserSelectToExit()
         {
             var fixture = new Fixture()
                .Customize(new AutoMoqCustomization());
@@ -71,9 +74,10 @@ namespace BusinessTests
             var schedulerManager = fixture.Create<ISchedulerManager>();
             var dbManager = fixture.Create<IDbManager>();
             var configuration = fixture.Create<IConfigurationModel>();
+            var consoleWrapper = fixture.Create<IConsoleWrapper>();
 
-            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration);
-            menuManager.SelectOption(Common.Enums.MenuOption.GetTemperatureFromDb);
+            var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration, consoleWrapper);
+            menuManager.SelectOption(Common.Enums.MenuOption.Exit);
 
             Mock.Get(schedulerManager).Verify(x => x.Start(It.IsAny<Func<Task>>()), Times.Never);
             Mock.Get(dbManager).Verify(x => x.GetAllData(), Times.Never);

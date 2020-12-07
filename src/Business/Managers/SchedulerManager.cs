@@ -1,30 +1,34 @@
-﻿using Business.Contracts;
-using System;
+﻿using System;
 using System.Reactive.Concurrency;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Business.Contracts;
 using Common.Models;
 
 namespace Business.Managers
 {
     public class SchedulerManager : ISchedulerManager
     {
-        private IScheduler _timerScheduler;
-        private IConfigurationModel _configuration;
+        private readonly IConfigurationModel _configuration;
+        private IDisposable _timer;
+        private readonly IScheduler _timerScheduler;
 
         public SchedulerManager(IConfigurationModel configuration, IScheduler scheduler = null)
         {
-            _timerScheduler = scheduler ?? Scheduler.Default;
             _configuration = configuration;
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            _timerScheduler = scheduler ?? Scheduler.Default;
         }
 
         public void Start(Func<Task> taskToExecute)
         {
-            throw new NotImplementedException();
+            _timer = Observable
+                .Interval(TimeSpan.FromSeconds(_configuration.PullIntervalInSeconds), _timerScheduler)
+                .Subscribe(async x => await taskToExecute.Invoke());
+        }
+
+        public void Dispose()
+        {
+            _timer?.Dispose();
         }
     }
 }
