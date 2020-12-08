@@ -28,7 +28,7 @@ namespace SpecFlow_BDD.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "CleanPersistenceData.feature"
+#line 1 "﻿CleanPersistenceData.feature"
 #line hidden
         
         public CleanPersistenceDataFeature(CleanPersistenceDataFeature.FixtureData fixtureData, SpecFlow_BDD_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
@@ -40,7 +40,7 @@ namespace SpecFlow_BDD.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CleanPersistenceData", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "﻿CleanPersistenceData", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,7 +81,7 @@ namespace SpecFlow_BDD.Features
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Clean persistence storage")]
-        [Xunit.TraitAttribute("FeatureTitle", "CleanPersistenceData")]
+        [Xunit.TraitAttribute("FeatureTitle", "﻿CleanPersistenceData")]
         [Xunit.TraitAttribute("Description", "Clean persistence storage")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void CleanPersistenceStorage()
@@ -90,7 +90,7 @@ namespace SpecFlow_BDD.Features
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clean persistence storage", null, tagsOfScenario, argumentsOfScenario);
-#line 4
+#line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -110,13 +110,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
- testRunner.Given("a database name is configured in the application configuration file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 4
+ testRunner.Given("a database file name is configured in the application configuration file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
+#line 5
  testRunner.When("a query is created to clean the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 7
+#line 6
  testRunner.Then("all the existing persisted temperature data should be deleted from the DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

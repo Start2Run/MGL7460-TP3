@@ -62,7 +62,7 @@ namespace BusinessTests
             var menuManager = new MenuManager(requestManager, schedulerManager, dbManager, configuration, consoleWrapper);
             menuManager.SelectOption(Common.Enums.MenuOption.ClearDb);
 
-            Mock.Get(dbManager).Verify(x => x.Clear(), Times.Once);
+            Mock.Get(dbManager).Verify(x => x.ClearAsync(), Times.Once);
         }
 
         [Fact]
@@ -81,8 +81,8 @@ namespace BusinessTests
 
             Mock.Get(schedulerManager).Verify(x => x.Start(It.IsAny<Func<Task>>()), Times.Never);
             Mock.Get(dbManager).Verify(x => x.GetAllData(), Times.Never);
-            Mock.Get(dbManager).Verify(x => x.Clear(), Times.Never);
-            Mock.Get(dbManager).Verify(x => x.Clear(), Times.Never);
+            Mock.Get(dbManager).Verify(x => x.ClearAsync(), Times.Never);
+            Mock.Get(dbManager).Verify(x => x.ClearAsync(), Times.Never);
         }
     }
 }

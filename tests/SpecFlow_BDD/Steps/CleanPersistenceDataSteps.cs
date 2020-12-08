@@ -5,6 +5,7 @@ using Common.Models;
 using Moq;
 using Persistence.Contracts;
 using Persistence.Managers;
+using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace SpecFlow_BDD.Steps
@@ -25,20 +26,20 @@ namespace SpecFlow_BDD.Steps
             _databaseManager = new DatabaseManager(_databaseHandler);
         }
 
-        [Given(@"a database name is configured in the application configuration file")]
-        public void GivenADatabaseNameIsConfiguredInTheApplicationConfigurationFile()
+        [Given(@"a database file name is configured in the application configuration file")]
+        public void GivenADatabaseFileNameIsConfiguredInTheApplicationConfigurationFile()
         {
             Mock.Get(_configuration).SetupGet(config => config.DatabaseName).Returns(Globals.DatabaseName);
         }
-
+        
         [When(@"a query is created to clean the DB")]
-        public void WhenAQueryIsCreatedToCleanTheDb()
+        public async Task WhenAQueryIsCreatedToCleanTheDB()
         {
-            _databaseManager.Clear();
+            await _databaseManager.ClearAsync();
         }
-
+        
         [Then(@"all the existing persisted temperature data should be deleted from the DB")]
-        public void ThenAllTheExistingPersistedTemperatureDataShouldBeDeletedFromTheDb()
+        public void ThenAllTheExistingPersistedTemperatureDataShouldBeDeletedFromTheDB()
         {
             Mock.Get(_databaseHandler).Verify(x => x.Clear(), Times.Once);
         }

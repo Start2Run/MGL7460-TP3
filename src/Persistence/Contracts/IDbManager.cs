@@ -8,6 +8,6 @@ namespace Persistence.Contracts
     {
         Task Insert(DbModel model);
         Task<IEnumerable<DbModel>> GetAllData();
-        Task Clear();
+        Task ClearAsync();
     }
 }

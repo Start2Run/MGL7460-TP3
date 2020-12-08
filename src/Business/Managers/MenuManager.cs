@@ -108,7 +108,7 @@ namespace Business.Managers
 
         private async Task ClearDb()
         {
-            await _dbManager.Clear();
+            await _dbManager.ClearAsync();
             _consoleWrapper.Write($"Database table {Globals.TableName} has been cleared. Press any key to continue...");
             _consoleWrapper.ReadKey();
         }

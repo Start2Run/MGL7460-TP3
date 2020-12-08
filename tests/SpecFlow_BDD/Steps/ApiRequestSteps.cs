@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoFixture;
 using AutoFixture.AutoMoq;
-using Common;
 using Common.Models;
 using Common.Models.RestApi;
 using Communication.Managers;
@@ -23,7 +22,6 @@ namespace SpecFlow_BDD.Steps
         private HttpTest _httpTest;
         private string _expectedJson;
 
-        private readonly string endpointAddress = "https://localhost";
         private readonly string apiKey = "apiKey1";
         private readonly string apiHost = "apiHost1";
         private readonly string longitude = "10.0";
@@ -47,10 +45,13 @@ namespace SpecFlow_BDD.Steps
         }
         
         [When(@"the request is sent to a Rest Api endpoint")]
-        public void WhenTheRequestIsSentToARestApiEndpoint()
+        public async Task WhenTheRequestIsSentToARestApiEndpoint()
         {
             _expectedJson = JsonConvert.SerializeObject(new Root());
+            _httpTest = new HttpTest();
+            using var httpTest = _httpTest;
             _httpTest.RespondWith(_expectedJson);
+            _receivedBody = await _requestManager.GetRequestAsync();
         }
         
         [When(@"the endpoint address is not the same as the one from the configuration file")]
@@ -58,10 +59,6 @@ namespace SpecFlow_BDD.Steps
         {
             var _differentEndpointAddress = "https://localhost/otherEndpoint";
             Mock.Get(_configuration).SetupGet(config => config.ApiAddress).Returns(_differentEndpointAddress);
-            Mock.Get(_configuration).SetupGet(config => config.ApiKey).Returns(apiKey);
-            Mock.Get(_configuration).SetupGet(config => config.ApiHost).Returns(apiHost);
-            Mock.Get(_configuration).SetupGet(config => config.Longitude).Returns(longitude);
-            Mock.Get(_configuration).SetupGet(config => config.Latitude).Returns(latitude);
         }
         
         [When(@"the request timeout")]
@@ -72,21 +69,20 @@ namespace SpecFlow_BDD.Steps
             httpTest.SimulateTimeout();
             _receivedBody = await _requestManager.GetRequestAsync();
         }
-        
+
         [Then(@"the returned body data should have the format JSON data model")]
         public void ThenTheReturnedBodyDataShouldHaveTheFormatJsonDataModel()
         {
             var receivedJson = JsonConvert.SerializeObject(_receivedBody.WeatherModel);
-
             Assert.Equal(_expectedJson, receivedJson);
         }
         
         [Then(@"the request should fail and return a null model")]
         public void ThenTheRequestShouldFailAndReturnANullModel()
         {
-            _httpTest.ShouldHaveCalled($"{endpointAddress}?{Globals.Longitude}={longitude}&{Globals.Latitude}={latitude}")
-                .WithHeader(Globals.ApiKey, apiKey)
-                .WithHeader(Globals.ApiHost, apiHost).Times(1);
+             var value = _requestManager.GetRequestAsync().GetAwaiter().GetResult();
+            Assert.Null(value.WeatherModel);
+            Assert.False(value.IsSuccessful);
         }
     }
 }

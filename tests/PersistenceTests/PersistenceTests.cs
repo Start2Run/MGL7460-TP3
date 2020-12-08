@@ -27,7 +27,7 @@ namespace PersistenceTests
 
             connectionFactory.GetConnection().CreateTableIfNotExists(Globals.TableName);
 
-            await db.Clear();
+            await db.ClearAsync();
             var items = new List<DbModel>();
             for (var i = 0; i < 10; i++)
             {
@@ -57,7 +57,7 @@ namespace PersistenceTests
 
             connectionFactory.GetConnection().CreateTableIfNotExists(Globals.TableName);
 
-            await db.Clear();
+            await db.ClearAsync();
             for (var i = 0; i < 10; i++)
             {
                 await db.Insert(new DbModel
@@ -68,7 +68,7 @@ namespace PersistenceTests
                     Temperature = i
                 });
             }
-            await db.Clear();
+            await db.ClearAsync();
             var result = await db.GetAllData();
             Assert.Empty(result);
         }

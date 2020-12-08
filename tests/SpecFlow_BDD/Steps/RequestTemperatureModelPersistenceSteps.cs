@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoFixture;
 using AutoFixture.AutoMoq;
@@ -37,7 +38,7 @@ namespace SpecFlow_BDD.Steps
             var consoleWrapper = mFixture.Create<Business.Contracts.IConsoleWrapper>();
             _menuManager = new MenuManager(_requestManager, schedulerManager, _dbManager, _configuration, consoleWrapper);
 
-            Mock.Get(_configuration).SetupGet(config => config.PullIntervalInSeconds).Returns(30);
+            Mock.Get(_configuration).SetupGet(config => config.PullIntervalInSeconds).Returns(10);
         }
 
         [Given(@"a valid endpoint address and database name are configured in the application configuration file")]
@@ -50,7 +51,7 @@ namespace SpecFlow_BDD.Steps
         [When(@"the request is sent with success to the endpoint address")]
         public void WhenTheRequestIsSentWithSuccessToTheEndpointAddress()
         {
-            Mock.Get(_requestManager).Setup(rm => rm.GetRequestAsync()).Returns(async () => await Task.FromResult(new RestApiModel { IsSuccessful = true }));
+            Mock.Get(_requestManager).Setup(rm => rm.GetRequestAsync()).Returns(async () => await Task.FromResult(new RestApiModel { IsSuccessful = true, WeatherModel = new Root { data = new List<Datum> { new Datum() } } }));
             _menuManager.SelectOption(MenuOption.GetTemperatureFromRestApi);
             _testScheduler.AdvanceBy(TimeSpan.FromSeconds(31).Ticks);
         }

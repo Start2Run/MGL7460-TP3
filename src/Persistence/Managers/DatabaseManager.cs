@@ -28,7 +28,7 @@ namespace Persistence.Managers
             return await _handler.GetAllData();
         }
 
-        public async Task Clear()
+        public async Task ClearAsync()
         {
             await _handler.Clear();
         }
